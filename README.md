@@ -151,9 +151,6 @@ This project is deployed on platform:
 
 * Render
 
-## ⚠️ Notes
-
-
 ## 🙌 Author
 
 Vikas Yadav
