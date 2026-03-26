@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap');
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background: #080c10;
+    color: #c9d1d9;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Scanline overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 217, 255, 0.012) 2px,
+        rgba(0, 217, 255, 0.012) 4px);
+  }
+
+  /* Custom scrollbars */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 2px;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Syne', sans-serif;
+  }
+
+  .font-code {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Animations */
+@keyframes pulse-dot {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes loading-sweep {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    transform: translateY(80px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toast-out {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(80px);
+    opacity: 0;
+  }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s infinite;
+}
+
+.animate-sweep {
+  animation: loading-sweep 1.2s ease-in-out infinite;
+}
+
+.toast-enter {
+  animation: toast-in 0.3s ease forwards;
+}
+
+.toast-exit {
+  animation: toast-out 0.3s ease forwards;
+}
